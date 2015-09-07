@@ -15,7 +15,7 @@ import model.GeometricCalculator;
 @WebServlet(name = "ResultsGenerator", urlPatterns = {"/results"})
 public class ResultsGenerator extends HttpServlet {
 
-    private static final String DESTINATION_VIEW = "results.jsp";
+    private static final String DESTINATION_VIEW = "calculator.jsp";
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
