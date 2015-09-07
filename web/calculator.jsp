@@ -14,6 +14,17 @@
     </head>
     <body>
         <h1>Geometric Calculator</h1>
+        <h2>Results</h2>
+        <div id="results">
+            <%
+                Object area = request.getAttribute("area");
+                if (area == null) {
+                    out.print("No results.");
+                } else {
+                    out.print("Area = " + area);
+                }
+            %>
+        </div>
         <h2>Area of a Rectangle</h2>
         <form id="rectangle" action="results" method="POST">
             <label for="length">Length</label>
