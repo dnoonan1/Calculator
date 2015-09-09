@@ -1,8 +1,7 @@
 package shape;
 
 /**
- *
- * @author Dan
+ * @author Dan Noonan
  */
 public class Rectangle {
 

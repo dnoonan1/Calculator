@@ -5,9 +5,9 @@ import shape.Rectangle;
 /**
  * @author Dan Noonan
  */
-public class GeometricCalculator {
+public class RectangleModel {
     
-    public double getResult(String length, String width) {
+    public double getArea(String length, String width) {
         double dLength = Double.parseDouble(length);
         double dWidth = Double.parseDouble(width);
         Rectangle rect = new Rectangle(dLength, dWidth);

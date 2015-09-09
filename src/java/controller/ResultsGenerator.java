@@ -7,7 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.GeometricCalculator;
+import model.CircleModel;
+import model.RectangleModel;
+import model.RightTriangleModel;
 
 /**
  * @author Dan Noonan
@@ -16,6 +18,17 @@ import model.GeometricCalculator;
 public class ResultsGenerator extends HttpServlet {
 
     private static final String DESTINATION_VIEW = "calculator.jsp";
+    
+    private static final String RECTANGLE = "rectangle";
+    private static final String CIRCLE = "circle";
+    private static final String TRIANGLE = "triangle";
+    
+    private static final String UNKNOWN_SHAPE = "Unknown shape.";
+    private static final String AREA_EQUALS = "Area = ";
+    private static final String HYPOTENUSE_EQUALS = "Hypotenuse = ";
+    
+    private static final String NUMBER_FORMAT_MESSAGE =
+            "Input value(s) must be numbers!";
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,13 +42,49 @@ public class ResultsGenerator extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String shape;
+        String resultMessage;
+        double value;
+        
         response.setContentType("text/html;charset=UTF-8");
         
-        String length = request.getParameter("length");
-        String width = request.getParameter("width");
+        shape = request.getParameter("shape");
         
-        GeometricCalculator gc = new GeometricCalculator();
-        request.setAttribute("area", gc.getResult(length, width));
+        switch (shape) {
+            case RECTANGLE:
+                String length = request.getParameter("length");
+                String width = request.getParameter("width");
+                try {
+                    value = new RectangleModel().getArea(length, width);
+                    resultMessage = AREA_EQUALS + value;
+                } catch (NumberFormatException e) {
+                    resultMessage = NUMBER_FORMAT_MESSAGE;
+                }
+                break;
+            case CIRCLE:
+                String radius = request.getParameter("radius");
+                try {
+                    value = new CircleModel().getArea(radius);
+                    resultMessage = AREA_EQUALS + value;
+                } catch (NumberFormatException e) {
+                    resultMessage = NUMBER_FORMAT_MESSAGE;
+                }
+                break;
+            case TRIANGLE:
+                String side1 = request.getParameter("side1");
+                String side2 = request.getParameter("side2");
+                try {
+                    value = new RightTriangleModel().getHypotenuse(side1, side2);
+                    resultMessage = HYPOTENUSE_EQUALS + value;
+                } catch (NumberFormatException e) {
+                    resultMessage = NUMBER_FORMAT_MESSAGE;
+                }
+                break;
+            default:
+                resultMessage = UNKNOWN_SHAPE;
+        }
+        
+        request.setAttribute("result", resultMessage);
         
         RequestDispatcher view =
                 request.getRequestDispatcher(DESTINATION_VIEW);

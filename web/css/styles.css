@@ -4,10 +4,53 @@
 */
 
 body {
-    font-family: sans-serif;
+    font-family: Verdana, Arial, sans-serif;
+    background-color: #ccc;
+}
+
+h1, h2 {
+    font-family: Georgia, serif;
+}
+
+h1 {
+    color: #fff;
+    background-color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px 10px;
+    text-shadow: 3px 3px 3px #777;
+}
+
+h2 {
+    background-color: #777;
+    padding: 10px 10px;
 }
 
 input {
     display: block;
     margin: 10px 0;
 }
+
+rect, circle, polygon, line {
+    stroke: rgb(0, 0, 0);
+    stroke-width: 2;
+    fill-opacity: 0;
+}
+
+.filled {
+    fill-opacity: 1;
+}
+
+svg text {
+    font-family: "Cambria Math", "Times New Roman", serif;
+    font-size: 150%;
+}
+
+.var {
+    font-family: "Cambria Math", "Times New Roman", serif;
+    font-style: italic;
+}
+
+/*circle {
+    stroke-width: 4;
+}*/
