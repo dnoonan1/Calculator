@@ -60,6 +60,7 @@ public class ResultsGenerator extends HttpServlet {
                 } catch (NumberFormatException e) {
                     resultMessage = NUMBER_FORMAT_MESSAGE;
                 }
+                request.setAttribute("rectangle-area", resultMessage);
                 break;
             case CIRCLE:
                 String radius = request.getParameter("radius");
@@ -69,6 +70,7 @@ public class ResultsGenerator extends HttpServlet {
                 } catch (NumberFormatException e) {
                     resultMessage = NUMBER_FORMAT_MESSAGE;
                 }
+                request.setAttribute("circle-area", resultMessage);
                 break;
             case TRIANGLE:
                 String side1 = request.getParameter("side1");
@@ -79,12 +81,11 @@ public class ResultsGenerator extends HttpServlet {
                 } catch (NumberFormatException e) {
                     resultMessage = NUMBER_FORMAT_MESSAGE;
                 }
+                request.setAttribute("triangle-hypotenuse", resultMessage);
                 break;
             default:
                 resultMessage = UNKNOWN_SHAPE;
         }
-        
-        request.setAttribute("result", resultMessage);
         
         RequestDispatcher view =
                 request.getRequestDispatcher(DESTINATION_VIEW);
