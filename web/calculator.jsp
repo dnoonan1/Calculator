@@ -46,10 +46,11 @@
             <input type="submit" value="Calculate">
         </form>
         <div id="results-rectangle" class="results"> 
+            Area =
             <%
                 Object result = request.getAttribute("rectangle-area");
                 if (result == null) {
-                    out.print("Area = ?");
+                    out.print("?");
                 } else {
                     out.print(result);
                 }
@@ -71,10 +72,11 @@
             <input type="submit" value="Calculate">
         </form>
         <div id="results-circle" class="results"> 
+            Area =
             <%
                 result = request.getAttribute("circle-area");
                 if (result == null) {
-                    out.print("Area = ?");
+                    out.print("?");
                 } else {
                     out.print(result);
                 }
@@ -100,10 +102,11 @@
             <input type="submit" value="Calculate">
         </form>
         <div id="results-triangle" class="results"> 
+            <span class="var">c</span> =
             <%
                 result = request.getAttribute("triangle-hypotenuse");
                 if (result == null) {
-                    out.print("<span class=\"var\">c</span> = ?");
+                    out.print("?");
                 } else {
                     out.print(result);
                 }
