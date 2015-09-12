@@ -8,6 +8,26 @@ body {
     background-color: #ccc;
 }
 
+h1, h2 {
+    font-family: Georgia, "Palatino Linotype", serif;
+}
+
+h1 {
+    color: #fff;
+    background-color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px 10px;
+    text-shadow: 3px 3px 3px #888;
+}
+
+h2 {
+    background-color: #777;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 14px 14px 16px 16px;
+}
+
 nav ul {
    list-style: none;
    text-align: center;
@@ -38,22 +58,33 @@ nav a:focus, nav a:hover {
     color: #888;
 }
 
-h1, h2 {
-    font-family: Georgia, serif;
+section {
+    max-width: 100%;
+    float: left;
+    margin: 15px;
+    border: 2px solid #000;
+    border-radius: 16px;
+    box-shadow: 5px 5px 5px #000;
 }
 
-h1 {
-    color: #fff;
-    background-color: #333;
-    text-align: center;
+section header, section h2 {
     margin: 0;
-    padding: 20px 10px;
-    text-shadow: 3px 3px 3px #777;
+    text-align: center;
 }
 
-h2 {
-    background-color: #777;
-    padding: 10px 10px;
+section div {
+    padding: 15px;
+}
+
+section aside.formula {
+    font-family: "Cambria Math", "Times New Roman", serif;
+    float: right;
+    margin-top: 85px;
+    font-size: 150%;
+}
+
+.field {
+    float: left;
 }
 
 input {
@@ -67,31 +98,32 @@ input[type=text] {
 input[type=submit] {
     background-color: #222;
     color: #fff;
-    margin: 20px 0;
+    margin: 20px auto;
     font-size: 1.25em;
     border-radius: 8px;
+    clear: left;
 }
 
-rect, circle, polygon, line {
-    stroke: rgb(0, 0, 0);
-    stroke-width: 2;
-    fill-opacity: 0;
-}
-
-.filled {
-    fill-opacity: 1;
-}
-
-svg text {
-    font-family: "Cambria Math", "Times New Roman", serif;
-    font-size: 150%;
-}
-
-.var {
+var {
     font-family: "Cambria Math", "Times New Roman", serif;
     font-style: italic;
 }
 
-/*circle {
-    stroke-width: 4;
-}*/
+.error {
+    color: #f00;
+    font-style: italic;
+}
+
+table.fraction {
+    display: inline;
+}
+
+table td.fraction {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: inherited;
+}
+
+.center {
+    text-align: center;
+}
