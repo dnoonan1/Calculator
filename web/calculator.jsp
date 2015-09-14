@@ -18,12 +18,18 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Geometric Calculator</title>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <!-- My own styles
         <link href="css/styles.css" rel="stylesheet">
+        -->
     </head>
     
     <body>
         
-        <header>
+        <div class="container">
+            
+        <header class="jumbotron">
             <h1>Geometric Calculator</h1>    
         </header>
         
@@ -35,7 +41,8 @@
             </ul>
         </nav>
         
-        <section id="rectangle">
+        <div class="row">
+        <section id="rectangle" class="col-md-4">
             <header>
                 <h2>Area of a Rectangle</h2>    
             </header>
@@ -82,7 +89,7 @@
             </div>
         </section>
 
-        <section id="circle">
+        <section id="circle" class="col-md-4">
             <header>
                 <h2>Area of a Circle</h2>    
             </header>
@@ -122,7 +129,7 @@
             </div>
         </section>
 
-        <section id="triangle">
+        <section id="triangle" class="col-md-4">
             <header>
                 <h2>Area of a Triangle</h2>    
             </header>
@@ -176,6 +183,9 @@
                 </div>
             </div>
         </section>
+        </div> <!-- end of div.row -->
+        
+        </div> <!-- end of div.container-fluid -->
         
         <c:if test="${not empty param.shape}">
             <script>
