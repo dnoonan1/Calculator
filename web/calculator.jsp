@@ -18,18 +18,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Geometric Calculator</title>
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <!-- My own styles
         <link href="css/styles.css" rel="stylesheet">
-        -->
     </head>
     
     <body>
         
         <div class="container">
             
-        <header class="jumbotron">
+        <header>
             <h1>Geometric Calculator</h1>    
         </header>
         
@@ -41,19 +37,16 @@
             </ul>
         </nav>
         
-        <div class="row">
-        <section id="rectangle" class="col-md-4">
+        <section id="rectangle">
             <header>
                 <h2>Area of a Rectangle</h2>    
             </header>
             <div>
-                <img src="svg/rectangle.svg" alt="rectangle"
-                     width="300" height="200">
+                <img src="svg/rectangle.svg" alt="rectangle" width="300" height="200">
                 <aside class="formula">
                     <var>A</var> = <var>&#x2113;w</var>
                 </aside>
-                <form id="form-rectangle" name="form-rectangle"
-                      method="POST" action="area-results">
+                <form id="form-rectangle" name="form-rectangle" method="POST" action="area-results">
                     <input type="hidden" name="shape" value="rectangle">
                     <div class="field">
                         <label for="length">
@@ -89,18 +82,16 @@
             </div>
         </section>
 
-        <section id="circle" class="col-md-4">
+        <section id="circle">
             <header>
                 <h2>Area of a Circle</h2>    
             </header>
             <div>
-                <img src="svg/circle.svg" alt="circle"
-                     width="200" height="200">
+                <img src="svg/circle.svg" alt="circle" width="200" height="200">
                 <aside class="formula">
                     <var>A</var> = <var>&pi;r</var>&thinsp;<sup>2</sup>
                 </aside>
-                <form id="form-circle" name="form-circle"
-                      action="area-results" method="POST">
+                <form id="form-circle" name="form-circle" action="area-results" method="POST">
                     <input type="hidden" name="shape" value="circle"
                            required>
                     <div class="field">
@@ -129,13 +120,12 @@
             </div>
         </section>
 
-        <section id="triangle" class="col-md-4">
+        <section id="triangle">
             <header>
                 <h2>Area of a Triangle</h2>    
             </header>
             <div>
-                <img src="svg/triangle.svg" alt="triangle"
-                     width="300" height="200">
+                <img src="svg/triangle.svg" alt="triangle" width="300" height="200">
                 <aside class="formula">
                     <table class="formula">
                         <tr>
@@ -147,8 +137,7 @@
                         </tr>
                     </table>
                 </aside>
-                <form id="form-triangle" name="form-triangle"
-                      action="area-results" method="POST">
+                <form id="form-triangle" name="form-triangle" action="area-results" method="POST">
                     <input type="hidden" name="shape" value="triangle">
                     <div class="field">
                         <label for="base">

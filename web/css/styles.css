@@ -122,7 +122,7 @@ table.fraction {
 table td.fraction {
     border-bottom-style: solid;
     border-bottom-width: 1px;
-    border-bottom-color: inherited;
+    border-bottom-color: inherit;
 }
 
 .center {
