@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    final String FLOAT_REGEX = "[+]?[0-9]*\\.?[0-9]+";
+    final String NON_NEGATIVE = "Non-negative number.";
+%>
 <!DOCTYPE html>
 <html lang="en">
     
@@ -47,7 +51,8 @@
                             Length (<var>&#x2113;</var>&thinsp;)
                         </label>
                         <input type="text" id="length" name="length" 
-                               placeholder="Enter length..." <%
+                               placeholder="Enter length..." required
+                               pattern="<%=FLOAT_REGEX%>" title="<%=NON_NEGATIVE%>"<%
                             String length = request.getParameter("length");
                             if (length != null) {
                                 out.print(" value=\"" + length + "\"");
@@ -59,7 +64,8 @@
                             Width (<var>w</var>&thinsp;)
                         </label>
                         <input type="text" id="width" name="width"
-                               placeholder = "Enter width..." <%
+                               placeholder = "Enter width..." required
+                               pattern="<%=FLOAT_REGEX%>" title="<%=NON_NEGATIVE%>"<%
                             String width = request.getParameter("width");
                             if (width != null) {
                                 out.print(" value=\"" + width + "\"");
@@ -70,41 +76,12 @@
                 </form>
                 <div id="results-rectangle" class="results"> 
                     Area = <%
-                    Object area = request.getAttribute("rectangleArea");
-                    if (area == null && length == null && width == null) {
-                        out.print("?");
-                    } else {
-                        try {
-                            Double.parseDouble(length);
-                            try {
-                                Double.parseDouble(width);
-                                out.print(area);
-                            } catch (NumberFormatException e) {
-                                out.print("? ");
-                                if (width.isEmpty()) {
-                                out.print("<p class=\"error\">Width is a required field.</p>");
-                                } else {
-                                    out.print("<p class=\"error\">Width must be a number.</p>");
-                                }
-                            }
-                        } catch (NumberFormatException e) {
-                            out.print("? ");
-                            if (length.isEmpty()) {
-                                out.print("<p class=\"error\">Length is a required field.</p>");
-                            } else {
-                                out.print("<p class=\"error\">Length must be a number.</p>");
-                            }
-                            try {
-                                Double.parseDouble(width);
-                            } catch (NumberFormatException e2) {
-                                if (width.isEmpty()) {
-                                out.print("<p class=\"error\">Width is a required field.</p>");
-                                } else {
-                                    out.print("<p class=\"error\">Width must be a number.</p>");
-                                }
-                            }
+                        Object area = request.getAttribute("rectangleArea");
+                        if (area == null) {
+                            out.print("?");
+                        } else {
+                            out.print(area);
                         }
-                    }
                     %>
                 </div>
             </div>
@@ -129,7 +106,8 @@
                             Radius (<var>r</var>&thinsp;)
                         </label>
                         <input type="text" id="radius" name="radius"
-                               placeholder="Enter radius..." <%
+                               placeholder="Enter radius..." required
+                               pattern="<%=FLOAT_REGEX%>" title="<%=NON_NEGATIVE%>"<%
                         String radius = request.getParameter("radius");
                         if (radius != null) {
                             out.print(" value=\"" + radius + "\"");
@@ -140,23 +118,12 @@
                 </form>
                 <div id="results-circle" class="results"> 
                     Area = <%
-                    area = request.getAttribute("circleArea");
-                    if (area == null && radius == null) {
-                        out.print("?");
-                    } else {
-                        try {
-                            Double.parseDouble(radius);
+                        area = request.getAttribute("circleArea");
+                        if (area == null) {
+                            out.print("?");
+                        } else {
                             out.print(String.format("%.5f...", area));
-                        } catch (NumberFormatException e) {
-                            out.print("? <p class=\"error\">");
-                            if (radius.isEmpty()) {
-                                out.print("Radius is a required field.");
-                            } else {
-                                out.print("Radius must be a number.");
-                            }        
-                            out.print("</p>");
                         }
-                    }
                     %>
                 </div>
             </div>
@@ -188,7 +155,8 @@
                             Base (<var>b</var>)&thinsp;
                         </label>
                         <input type="text" id="base" name="base"
-                               placeholder="Enter base..." <%
+                               placeholder="Enter base..." required
+                               pattern="<%=FLOAT_REGEX%>" title="<%=NON_NEGATIVE%>"<%
                             String base = request.getParameter("base");
                             if (base != null) {
                                 out.print(" value=\"" + base + "\"");
@@ -200,7 +168,8 @@
                             Height (<var>h</var>)&thinsp;
                         </label>
                         <input type="text" id="height" name="height"
-                               placeholder="Enter height..." <%
+                               placeholder="Enter height..." required
+                               pattern="<%=FLOAT_REGEX%>" title="<%=NON_NEGATIVE%>"<%
                             String height = request.getParameter("height");
                             if (height != null) {
                                 out.print(" value=\"" + height + "\"");
@@ -211,58 +180,25 @@
                 </form>
                 <div id="results-triangle" class="results"> 
                     Area = <%
-                    area = request.getAttribute("triangleArea");
-                    if (area == null && base == null && height == null) {
-                        out.print("?");
-                    } else {
-                        final String BASE_REQUIRED = "<p class=\"error\">Base is a required field.</p>";
-                        final String BASE_NUMBER = "<p class=\"error\">Base must be a number.</p>";
-                        final String HEIGHT_REQUIRED = "<p class=\"error\">Height is a required field.</p>";
-                        final String HEIGHT_NUMBER = "<p class=\"error\">Height must be a number.</p>";
-                        try {
-                            Double.parseDouble(base);
-                            try {
-                                Double.parseDouble(height);
-                                out.print(area);
-                            } catch (NumberFormatException e) {
-                                out.print("? ");
-                                if (height.isEmpty()) {
-                                out.print(HEIGHT_REQUIRED);
-                                } else {
-                                    out.print(HEIGHT_NUMBER);
-                                }
-                            }
-                        } catch (NumberFormatException e) {
-                            out.print("? ");
-                            if (base.isEmpty()) {
-                                out.print(BASE_REQUIRED);
-                            } else {
-                                out.print(BASE_NUMBER);
-                            }
-                            try {
-                                Double.parseDouble(height);
-                            } catch (NumberFormatException e2) {
-                                if (height.isEmpty()) {
-                                out.print(HEIGHT_REQUIRED);
-                                } else {
-                                    out.print(HEIGHT_NUMBER);
-                                }
-                            }
+                        area = request.getAttribute("triangleArea");
+                        if (area == null) {
+                            out.print("?");
+                        } else {
+                            out.print(area);
                         }
-                    }
                     %>
                 </div>
             </div>
         </section>
                 
         <%
-        Object shape = request.getParameter("shape");
-        if (shape != null) {
-            out.println("<script>");
-            out.println("\t\tonload = function() { document.getElementById(\""
-                    + shape + "\").scrollIntoView() }");
-            out.print("\t</script>");
-        }
+            Object shape = request.getParameter("shape");
+            if (shape != null) {
+                out.println("<script>");
+                out.println("\t\tonload = function() { document.getElementById(\""
+                        + shape + "\").scrollIntoView() }");
+                out.print("\t</script>");
+            }
         %>
         
     </body>
