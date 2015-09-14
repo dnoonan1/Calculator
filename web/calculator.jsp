@@ -5,10 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    final String FLOAT_REGEX = "[+]?[0-9]*\\.?[0-9]+";
-    final String NON_NEGATIVE = "Non-negative number.";
-%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<c:set var="FLOAT_REGEX" value="[+]?[0-9]*\\.?[0-9]+" />
+<c:set var="NON_NEGATIVE" value="Non-negative number" />
+
 <!DOCTYPE html>
 <html lang="en">
     
@@ -52,12 +54,8 @@
                         </label>
                         <input type="text" id="length" name="length" 
                                placeholder="Enter length..." required
-                               pattern="<%=FLOAT_REGEX%>" title="<%=NON_NEGATIVE%>"<%
-                            String length = request.getParameter("length");
-                            if (length != null) {
-                                out.print(" value=\"" + length + "\"");
-                            }
-                            %>>
+                               pattern="${FLOAT_REGEX}" title="${NON_NEGATIVE}"
+                               value="${param.length}">
                     </div>
                     <div class="field">
                         <label for="width">
@@ -65,24 +63,21 @@
                         </label>
                         <input type="text" id="width" name="width"
                                placeholder = "Enter width..." required
-                               pattern="<%=FLOAT_REGEX%>" title="<%=NON_NEGATIVE%>"<%
-                            String width = request.getParameter("width");
-                            if (width != null) {
-                                out.print(" value=\"" + width + "\"");
-                            }
-                            %>>
+                               pattern="${FLOAT_REGEX}" title="${NON_NEGATIVE}"
+                               value="${param.width}">
                     </div>
                     <input type="submit" value="Calculate">
                 </form>
                 <div id="results-rectangle" class="results"> 
-                    Area = <%
-                        Object area = request.getAttribute("rectangleArea");
-                        if (area == null) {
-                            out.print("?");
-                        } else {
-                            out.print(area);
-                        }
-                    %>
+                    Area =
+                    <c:choose>
+                        <c:when test="${empty rectangleArea}">
+                            ?
+                        </c:when>
+                        <c:otherwise>
+                            ${rectangleArea}
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </section>
@@ -107,24 +102,22 @@
                         </label>
                         <input type="text" id="radius" name="radius"
                                placeholder="Enter radius..." required
-                               pattern="<%=FLOAT_REGEX%>" title="<%=NON_NEGATIVE%>"<%
-                        String radius = request.getParameter("radius");
-                        if (radius != null) {
-                            out.print(" value=\"" + radius + "\"");
-                        }
-                        %>>
+                               pattern="${FLOAT_REGEX}" title="${NON_NEGATIVE}"
+                               value="${param.radius}">
                     </div>
                     <input type="submit" value="Calculate">
                 </form>
                 <div id="results-circle" class="results"> 
-                    Area = <%
-                        area = request.getAttribute("circleArea");
-                        if (area == null) {
-                            out.print("?");
-                        } else {
-                            out.print(String.format("%.5f...", area));
-                        }
-                    %>
+                    Area =
+                    <c:choose>
+                        <c:when test="${empty circleArea}">
+                            ?
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:formatNumber value="${circleArea}"
+                                              maxFractionDigits="5" />...
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </section>
@@ -156,12 +149,8 @@
                         </label>
                         <input type="text" id="base" name="base"
                                placeholder="Enter base..." required
-                               pattern="<%=FLOAT_REGEX%>" title="<%=NON_NEGATIVE%>"<%
-                            String base = request.getParameter("base");
-                            if (base != null) {
-                                out.print(" value=\"" + base + "\"");
-                            }
-                            %>>
+                               pattern="${FLOAT_REGEX}" title="${NON_NEGATIVE}"
+                               value="${param.base}">
                     </div>
                     <div class="field">
                         <label for="height">
@@ -169,37 +158,33 @@
                         </label>
                         <input type="text" id="height" name="height"
                                placeholder="Enter height..." required
-                               pattern="<%=FLOAT_REGEX%>" title="<%=NON_NEGATIVE%>"<%
-                            String height = request.getParameter("height");
-                            if (height != null) {
-                                out.print(" value=\"" + height + "\"");
-                            }
-                            %>>
+                               pattern="${FLOAT_REGEX}" title="${NON_NEGATIVE}"
+                               value="${param.height}">
                     </div>
                     <input type="submit" value="Calculate">
                 </form>
                 <div id="results-triangle" class="results"> 
-                    Area = <%
-                        area = request.getAttribute("triangleArea");
-                        if (area == null) {
-                            out.print("?");
-                        } else {
-                            out.print(area);
-                        }
-                    %>
+                    Area =
+                    <c:choose>
+                        <c:when test="${empty triangleArea}">
+                            ?
+                        </c:when>
+                        <c:otherwise>
+                            ${triangleArea}
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </section>
-                
-        <%
-            Object shape = request.getParameter("shape");
-            if (shape != null) {
-                out.println("<script>");
-                out.println("\t\tonload = function() { document.getElementById(\""
-                        + shape + "\").scrollIntoView() }");
-                out.print("\t</script>");
-            }
-        %>
+        
+        <c:if test="${not empty param.shape}">
+            <script>
+                onload = function() {
+                    document.getElementById("${param.shape}")
+                            .scrollIntoView();
+                }
+            </script>
+        </c:if>
         
     </body>
 </html>
