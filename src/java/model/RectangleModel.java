@@ -7,7 +7,8 @@ import shape.Rectangle;
  */
 public class RectangleModel {
     
-    public double getArea(String length, String width) {
+    public double getArea(String length, String width)
+            throws NumberFormatException {
         double dLength = Double.parseDouble(length);
         double dWidth = Double.parseDouble(width);
         Rectangle rect = new Rectangle(dLength, dWidth);

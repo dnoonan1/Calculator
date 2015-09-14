@@ -7,7 +7,7 @@ import shape.Circle;
  */
 public class CircleModel {
     
-    public double getArea(String radius) {
+    public double getArea(String radius) throws NumberFormatException {
         double dRadius = Double.parseDouble(radius);
         Circle circle = new Circle(dRadius);
         return circle.getArea();

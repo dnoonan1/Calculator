@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author Dan Noonan
  */
-@WebServlet(name = "MainController", urlPatterns = {"/calculator"})
+@WebServlet(name = "MainController", urlPatterns = {"/area-calculator"})
 public class MainController extends HttpServlet {
 
     private static final String DESTINATION_VIEW = "calculator.jsp";

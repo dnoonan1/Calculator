@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="200" height="200">
+    <style>
+        .var {
+            font-family: "Cambria Math", "Times New Roman", serif;
+            font-size: 150%;
+            font-style: italic;
+        }
+        line, circle {
+            stroke: rgb(0, 0, 0);
+            stroke-width: 2;
+            fill-opacity: 0;
+        }
+        .filled {
+            fill-opacity: 1;
+        }
+    </style>
+    <circle cx="100" cy="100" r="75" />
+    <circle class="filled" cx="100" cy="100" r="3" />
+    <line x1="100" y1="100" x2="175" y2="100" />
+    <text class="var" x="130" y="90">r</text>
+</svg>
