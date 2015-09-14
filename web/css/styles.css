@@ -3,106 +3,28 @@
     Author     : Dan Noonan
 */
 
-body {
-    font-family: Verdana, Arial, sans-serif;
-    background-color: #ccc;
-}
-
-h1, h2 {
-    font-family: Georgia, "Palatino Linotype", serif;
-}
-
-h1 {
-    color: #666;
-    background-color: #333;
-    text-align: center; 
-    margin: 0;
-    padding: 20px 10px;
-    text-shadow: 0px 1px 0px #fff, 0px -1px 0px #000;
-}
-
 h2 {
-    background-color: #777;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 14px 14px 16px 16px;
-}
-
-nav ul {
-   list-style: none;
-   text-align: center;
-}
-
-nav li {
-    display: inline;
-}
-
-nav li::after {
-    content: " / ";
-}
-
-nav li:last-child::after {
-    content: "";
-}
-
-nav a {
-    font-weight: bold;
-    text-decoration: none;
-}
-
-nav a:link, nav a:visited {
-    color: #222;
-}
-
-nav a:focus, nav a:hover {
-    color: #888;
-}
-
-section {
-    max-width: 100%;
-    float: left;
-    margin: 15px;
-    border: 2px solid #000;
+    padding: 5px;
     border-radius: 16px;
-    box-shadow: 5px 5px 5px #000;
 }
 
-section header, section h2 {
-    margin: 0;
-    text-align: center;
+section img {
+    margin: 15px 0;
 }
 
-section div {
-    padding: 15px;
+.formula {
+    font-family: "Cambria Math", "Times New Roman", serif;    
 }
 
-section aside.formula {
-    font-family: "Cambria Math", "Times New Roman", serif;
-    float: right;
-    margin-top: 85px;
+section div.formula {
+    display: none; /* remove temporarily */
     font-size: 150%;
-}
-
-.field {
-    float: left;
-}
-
-input {
-    display: block;
-}
-
-input[type=text] {
+    height: 80px;
     margin: 10px 0;
-}
-
-input[type=submit] {
-    background-color: #222;
-    color: #fff;
-    padding: 6px;
-    margin: 20px auto;
-    font-size: 1.25em;
-    border-radius: 8px;
-    clear: left;
+    border: 1px solid black;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 var {
@@ -110,21 +32,8 @@ var {
     font-style: italic;
 }
 
-.error {
-    color: red;
-    font-style: italic;
-}
-
-table.fraction {
-    display: inline;
-}
-
 table td.fraction {
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: inherited;
-}
-
-.center {
-    text-align: center;
 }
