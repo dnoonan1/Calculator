@@ -182,7 +182,7 @@
                 onload = function() {
                     document.getElementById("${param.shape}")
                             .scrollIntoView();
-                }
+                };
             </script>
         </c:if>
         
